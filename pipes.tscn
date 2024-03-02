@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4o6qo0jfg8ex"]
+
+[ext_resource type="Script" path="res://Pipes.gd" id="1_omla5"]
+[ext_resource type="Texture2D" uid="uid://c8b0oywgutme4" path="res://Flappy Bird Assets/Tiles/Style 1/PipeStyle1.png" id="2_chjtp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqqg4"]
+size = Vector2(18, 288)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xl4a"]
+size = Vector2(18, 288)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5btu"]
+texture = ExtResource("2_chjtp")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tj1nj"]
+sources/0 = SubResource("TileSetAtlasSource_e5btu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxj2t"]
+size = Vector2(20, 57.94)
+
+[node name="Pipes" type="CharacterBody2D"]
+scale = Vector2(2.94392, 2.76148)
+script = ExtResource("1_omla5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Bottom" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 176)
+shape = SubResource("RectangleShape2D_cqqg4")
+
+[node name="Upper" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -176)
+shape = SubResource("RectangleShape2D_6xl4a")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_tj1nj")
+format = 2
+layer_0/tile_data = PackedInt32Array(196607, 0, 0, 131072, 65536, 0, -131073, 0, 4, -196608, 65536, 4, 262143, 0, 2, 327679, 0, 2, 393215, 0, 2, 458751, 0, 2, 524287, 0, 2, 589823, 0, 2, 655359, 0, 2, 720895, 0, 2, 786431, 0, 2, 851967, 0, 2, 917503, 0, 2, 983039, 0, 2, 1048575, 0, 2, 1114111, 0, 2, 1179647, 0, 2, 1245183, 0, 2, 1310719, 0, 2, 196608, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 589824, 65536, 1, 655360, 65536, 1, 720896, 65536, 1, 786432, 65536, 1, 851968, 65536, 1, 917504, 65536, 1, 983040, 65536, 1, 1048576, 65536, 1, 1114112, 65536, 1, 1179648, 65536, 1, -196609, 0, 2, -262145, 0, 2, -327681, 0, 2, -393217, 0, 2, -458753, 0, 2, -524289, 0, 2, -589825, 0, 2, -655361, 0, 2, -720897, 0, 2, -786433, 0, 2, -851969, 0, 2, -917505, 0, 2, -983041, 0, 2, -1048577, 0, 2, -1114113, 0, 2, -1245185, 0, 2, -1179649, 0, 2, -262144, 65536, 2, -327680, 65536, 2, -393216, 65536, 2, -458752, 65536, 2, -524288, 65536, 2, -589824, 65536, 2, -655360, 65536, 2, -720896, 65536, 2, -786432, 65536, 2, -851968, 65536, 2, -917504, 65536, 2, -983040, 65536, 2, -1048576, 65536, 2, -1114112, 65536, 2, -1179648, 65536, 2, -1245184, 65536, 2, -1310720, 65536, 2, 1245184, 65536, 2)
+
+[node name="score box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score box"]
+position = Vector2(0, -8.63374e-07)
+shape = SubResource("RectangleShape2D_jxj2t")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="score box" to="." method="_on_score_box_body_entered"]

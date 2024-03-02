@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbbfg66q3infw"]
+
+[ext_resource type="PackedScene" uid="uid://b4hk08putgv5i" path="res://background.tscn" id="1_vgo78"]
+[ext_resource type="PackedScene" uid="uid://dgb0s8lqbcawa" path="res://Player.tscn" id="2_41qdh"]
+[ext_resource type="FontFile" uid="uid://da7ffrfpjrli0" path="res://Minecraftchmc-dBlX.ttf" id="3_gbhof"]
+[ext_resource type="Script" path="res://Label.gd" id="4_bauxb"]
+[ext_resource type="Script" path="res://Pipes Spawner.gd" id="5_10gdf"]
+[ext_resource type="Script" path="res://Score.gd" id="6_8femo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhk2k"]
+size = Vector2(256, 18)
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_vgo78")]
+
+[node name="Player" parent="." instance=ExtResource("2_41qdh")]
+position = Vector2(128, 320)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 456.0
+offset_bottom = 304.0
+theme_override_fonts/font = ExtResource("3_gbhof")
+theme_override_font_sizes/font_size = 48
+text = "Press Space to Start"
+script = ExtResource("4_bauxb")
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 0.6
+autostart = true
+
+[node name="LowerBound" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerBound"]
+position = Vector2(128, 648)
+shape = SubResource("RectangleShape2D_bhk2k")
+
+[node name="Pipes Spawner" type="Node2D" parent="."]
+position = Vector2(128, 320)
+script = ExtResource("5_10gdf")
+
+[node name="Timer" type="Timer" parent="Pipes Spawner"]
+wait_time = 2.0
+autostart = true
+
+[node name="Score" type="Label" parent="."]
+offset_left = 144.0
+offset_right = 496.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("3_gbhof")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+script = ExtResource("6_8femo")
+
+[connection signal="timeout" from="Label/Timer" to="Label" method="_on_timer_timeout"]
+[connection signal="body_entered" from="LowerBound" to="Player" method="_on_lower_bound_body_entered"]
+[connection signal="body_entered" from="LowerBound" to="Label" method="_on_lower_bound_body_entered"]
+[connection signal="timeout" from="Pipes Spawner/Timer" to="Pipes Spawner" method="_on_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4hk08putgv5i"]
+
+[ext_resource type="Script" path="res://Background.gd" id="1_6j1lw"]
+[ext_resource type="Texture2D" uid="uid://bbt885xvgnyyc" path="res://Flappy Bird Assets/Background/Background3.png" id="2_wb1jj"]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_6j1lw")
+
+[node name="Background Layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Background Image" type="Sprite2D" parent="Background Layer"]
+position = Vector2(320, 320)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_wb1jj")
