@@ -5,12 +5,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = get_node("AnimatedSprite2D")
 
+
 func _physics_process(delta):
+	
 	if Utils.playing:
 		if rotation_degrees < 50:
 			rotation_degrees = velocity.y/10
 		
 		velocity.y += gravity * delta
+		
+		get_screen_transform()
+		get_window().position.y = -position.y + 500
 
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = JUMP_VELOCITY
@@ -31,4 +36,5 @@ func death():
 	get_node("../Pipes Spawner").pipesList.clear()
 	position.y = 320
 	rotation_degrees = 0
+	get_window().position.y = Utils.DWP
 	
